@@ -1,17 +1,13 @@
-import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-
-import { store } from './_helpers';
-import { App } from './App';
-
-// setup fake backend
-import { configureFakeBackend } from './_helpers';
-configureFakeBackend();
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { Router , Route } from 'react-router-dom'
+import RouteMap from './container/router/routerContainer.js'
+import { hashHistory } from 'react-router'
 
 render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
+
+    <RouteMap history={ hashHistory }/>
+   ,
     document.getElementById('app')
 );
