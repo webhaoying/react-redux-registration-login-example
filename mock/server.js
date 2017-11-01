@@ -8,6 +8,18 @@ var router = require('koa-router')();
 // router.get('/api', function *(next) {
 //     this.body = 'test data'
 // });
+// 登录 -- 模拟登录验证
+var loginData = require('./login/info.js')
+router.get('/api/login', function *(next) {
+    console.log('用户--登录')
+
+    this.body = loginData
+    // this.body = {
+    //     errno: 0,
+    //     msg: 'ok'
+    // }
+});
+
 
 // 首页 —— 广告（超值特惠）
 var homeAdData = require('./home/ad.js')

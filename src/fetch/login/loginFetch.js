@@ -3,13 +3,8 @@
  */
 import { post } from '../post.js'
 export function loginFetch(username,password) {
-    return post('http://gbscn1.roboterra.com.cn:9000/api/register', {
+    return post('http://localhost:9000/api/login', {
         username:username,
-        password:password,
-        nickname:'hao',
-        given_name:111,
-        family_name:222,
-        region:333,
-        language:'zh_CN'
+        password:password
     });
 }

@@ -2,12 +2,13 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { Router , Route } from 'react-router-dom'
-import RouteMap from './container/router/routerContainer.js'
+import RouteMap from './router/routerContainer.js'
 import { hashHistory } from 'react-router'
-
+import { store } from './store/configureStore.js'
 render(
-
-    <RouteMap history={ hashHistory }/>
+    <Provider store={store}>
+        <RouteMap history={ hashHistory }/>
+    </Provider>
    ,
     document.getElementById('app')
 );
