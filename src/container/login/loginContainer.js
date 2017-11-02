@@ -10,8 +10,8 @@ class LoginContainer extends React.PureComponent{
         this.state ={
             username:'',
             password:'',
-            submitted:'false',
-            isLogin:'false'
+            submitted:false,
+            isLogin:false
         }
     }
     // 这里是封装了一个input输入内容改变的函数
@@ -31,14 +31,20 @@ class LoginContainer extends React.PureComponent{
     handleLogin(){
         const {username,password} = this.state;
         console.log('点击登录');
+        // 点击登录之后 将submitted值变为true
+        this.setState(
+            {
+                submitted:true
+            }
+        );
         const { dispatch } = this.props;
         if(username && password ){
-            //进行登录的ajax
+        //进行登录的ajax
             dispatch(userActions.login(username, password));
         }
+        //登录成功之后的逻辑  都在action中写
     }
     render(){
-        console.log(this.state)
         return(
             <div>
                 <div className="text-center">
@@ -47,6 +53,8 @@ class LoginContainer extends React.PureComponent{
                 <LoginComponent
                     username={this.state.username}
                     password={this.state.password}
+                    submitted={this.state.submitted}
+                    loggingIn={this.props.loggingIn}
                     handleChange={this.handleChange.bind(this)}
                     handleLogin={this.handleLogin.bind(this)}
                 />
@@ -60,9 +68,11 @@ function mapStateToProps(state) {
     // return {
     //     loggingIn
     // };
-    //上述就相当于是如下书写
+    //上述与下边等价
     return {
         loggingIn: state.authentication.loggedIn
     };
 }
+// export default LoginContainer
+// 这里的connne使得组件有了this.props.dispatch方法
 export default connect(mapStateToProps)(LoginContainer)

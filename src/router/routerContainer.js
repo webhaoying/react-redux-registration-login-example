@@ -12,17 +12,22 @@ import DetailContainer from '../container/detail/detailContainer.js'
 class RouteMap extends React.PureComponent {
     render(){
         return (
-            <Router history={this.props.history}>
-                <Route path="/" component={App}>
-                    <IndexRoute component={LoginContainer}/>
-                    <Route path='register' component={RegisterContainer}/>
-                    <Route path='/login' component={LoginContainer}/>
-                    <Route path='/home' component={HomeContainer}/>
-                    <Route path='/detail(/:id)' component={DetailContainer}/>
-                    <Route path='*' component={NotFoundContainer}/>
-                </Route>
-            </Router>
+            <div>
+
+                <Router history={this.props.history}>
+                    <Route path="/" component={App}>
+                        <IndexRoute component={LoginContainer}/>
+                        <Route path='register' component={RegisterContainer}/>
+                        <Route path='/login' component={LoginContainer}/>
+                        <Route path='/home' component={HomeContainer}/>
+                        <Route path='/detail(/:id)' component={DetailContainer}/>
+                        <Route path='*' component={NotFoundContainer}/>
+                    </Route>
+                </Router>
+            </div>
+
         )
     }
 }
+
 export default RouteMap;

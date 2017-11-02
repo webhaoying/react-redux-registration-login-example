@@ -2,9 +2,7 @@ import { userConstants } from '../constants/authentication.js'
 import { hashHistory } from 'react-router'
 import { alertActions } from './alert.action.js'
 import { userService } from '../fetch/user.service.js'
-import { createHashHistory } from 'history';
 
-export const history = createHashHistory();
 
 export const userActions = {
     login,
@@ -46,6 +44,7 @@ function login(username, password) {
         .then(json => {
             console.log(json);
             dispatch(success(json.username));
+            // js来控制路由跳转  也可以利用Link标签来实现
             // hashHistory.push('/home');
         }).catch(
             error =>{
